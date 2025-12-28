@@ -34,8 +34,52 @@
         <p>Gemini / ChatGPT</p>
       </div>
       <div class="panel center">
-        <div class="circle"></div>
+  <div class="focus-wrapper">
+
+    <!-- Progress Ring -->
+    <svg class="progress-ring" width="360" height="360">
+      <circle
+        class="progress-ring__circle"
+        cx="180"
+        cy="180"
+        r="160"
+      />
+    </svg>
+
+    <!-- Content -->
+    <div class="focus-content">
+      <div class="timer-time" id="timeDisplay">25:00</div>
+
+      <div class="session-count">
+        Sessions: <span id="sessions">0</span>
       </div>
+
+      <div class="mode-buttons">
+        <button onclick="setMode('pomodoro')">Pomodoro</button>
+        <button onclick="setMode('custom')">Custom</button>
+        <button onclick="setMode('countup')">Count Up</button>
+      </div>
+
+      <input
+  id="customInput"
+  type="number"
+  placeholder="Minutes"
+  oninput="updateCustomTime()"/>
+
+
+      <div class="timer-actions">
+        <button id="toggleBtn" onclick="toggleTimer()">▶</button>
+        <button onclick="resetTimer()">⟲</button>
+      </div>
+    </div>
+
+    <audio id="alarmSound">
+      <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg">
+    </audio>
+
+  </div>
+</div>
+
       <div class="panel right">
         <div class="box">Google To Do</div>
         <div class="box">Upcoming (Calendar)</div>
