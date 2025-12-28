@@ -4,6 +4,13 @@ const views = document.querySelectorAll(".view");
 buttons.forEach(btn => {
   btn.addEventListener("click", () => {
 
+    const view = btn.dataset.view;
+
+    // ⛔ STOP if no internal view (external app like Spotify)
+    if (!view) {
+      return;
+    }
+
     // sidebar active state
     buttons.forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
@@ -11,10 +18,11 @@ buttons.forEach(btn => {
     // switch full workspace view
     views.forEach(v => v.classList.remove("active"));
     document
-      .getElementById(btn.dataset.view)
+      .getElementById(view)
       .classList.add("active");
   });
 });
+
 let mode = localStorage.getItem("mode") || "pomodoro";
 let duration = 25 * 60;
 let timeLeft = duration;
