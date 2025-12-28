@@ -68,16 +68,29 @@
 
 
       <div class="timer-actions">
-        <button id="toggleBtn" onclick="toggleTimer()">▶</button>
-        <button onclick="resetTimer()">⟲</button>
-      </div>
-    </div>
+    <button
+      id="toggleBtn"
+      class="play-pause-btn"
+      onclick="toggleTimer()"
+    >
+      ▶
+    </button>
 
-    <audio id="alarmSound">
-      <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg">
-    </audio>
-
+    <button
+      class="reset-btn"
+      onclick="resetTimer()"
+    >
+      ⟲
+    </button>
   </div>
+
+      </div>
+
+      <audio id="alarmSound">
+        <source src="https://actions.google.com/sounds/v1/alarms/alarm_clock.ogg">
+      </audio>
+
+    </div>
 </div>
 
       <div class="panel right">
