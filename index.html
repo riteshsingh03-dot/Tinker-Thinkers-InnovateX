@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Prodeff Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<div class="desktop">
+
+  <!-- TASKBAR -->
+  <aside class="taskbar">
+    <button class="task-icon active" data-view="home">P</button>
+    <button class="task-icon" data-view="google"><img src="https://static.vecteezy.com/system/resources/previews/011/598/471/original/google-logo-icon-illustration-free-vector.jpg" height="48" width="48" style="border-radius:50%;"></button>
+    <button class="task-icon" data-view="gemini"><img src="https://th.bing.com/th/id/OIP.kkoBVyiBexLUCxwk_0LZ-gHaGx?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" height="48" width="48" style="border-radius:50%;"></button>
+    <button class="task-icon" data-view="chatgpt"><img src="https://seeklogo.com/images/C/chatgpt-logo-02AFA704B5-seeklogo.com.png" height="48" width="48" style="border-radius:50%;"></button>
+    <button class="task-icon" data-view="notebooklm"><img src="https://cdn.freelogovectors.net/wp-content/uploads/2025/06/notebooklm_logo-freelogovectors.net_.png" height="40" width="40" style="border-radius:50%;"></button>
+    <button class="task-icon" data-view="drive"><img src="https://static.vecteezy.com/system/resources/previews/022/484/494/original/google-drive-icon-logo-symbol-free-png.png" height="48" width="48" style="border-radius:50%;"></button>
+    <button class="task-icon" data-view="spotify"><img src="https://as2.ftcdn.net/jpg/05/62/75/35/1000_F_562753507_4ABUyPLOeujgVjityAfeZUCWz2s1u0TF.jpg" height="48" width="48" style="border-radius:50%;"></button>
+  </aside>
+
+  <!-- MAIN AREA -->
+  <main class="workspace">
+
+  <!-- HOME -->
+  <section class="view active" id="home">
+    <header class="top-bar">Good Motivating Thoughts</header>
+    <section class="grid">
+      <div class="panel left">
+        <h3>AI Planner</h3>
+        <p>Gemini / ChatGPT</p>
+      </div>
+      <div class="panel center">
+        <div class="circle"></div>
+      </div>
+      <div class="panel right">
+        <div class="box">Google To Do</div>
+        <div class="box">Upcoming (Calendar)</div>
+      </div>
+    </section>
+    <footer class="music">Spotify</footer>
+  </section>
+
+  <!-- GOOGLE -->
+  <section class="view" id="google">
+    <h1>Google</h1>
+    <p>Search, tools, shortcuts</p>
+  </section>
+
+  <!-- GEMINI -->
+  <section class="view" id="gemini">
+    <h1>Gemini AI</h1>
+    <p>AI assistant UI goes here</p>
+  </section>
+
+  <!-- CHATGPT -->
+  <section class="view" id="chatgpt">
+    <h1>ChatGPT</h1>
+    <p>Chat interface (custom / mock)</p>
+  </section>
+
+  <!-- NOTEBOOK -->
+  <section class="view" id="notebook">
+    <h1>Notebook LM</h1>
+  </section>
+
+  <!-- DRIVE -->
+  <section class="view" id="drive">
+    <h1>Google Drive</h1>
+  </section>
+
+  <!-- SPOTIFY -->
+  <section class="view" id="spotify">
+    <h1>Spotify</h1>
+  </section>
+
+</main>
+
+</div>
+
+</body>
+</html>
