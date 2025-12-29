@@ -196,3 +196,184 @@ function updateCustomTime() {
   setProgress(1);
   updateDisplay();
 }
+
+/* ===== mini local player logic ===== */
+(function(){
+  const tracks = [
+    { name: "Jungle Ambience", src: "audio/jungle.mp3" },
+    { name: "Rain Ambience", src: "audio/rain.mp3" },
+  ];
+
+  const audio = document.getElementById("localAudio");
+  const playBtn = document.getElementById("playPauseBtn");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const loopBtn = document.getElementById("loopBtn");
+  let foreverLoop = false;
+  const trackName = document.getElementById("trackName");
+  const progress = document.getElementById("progress");
+  const currentTimeEl = document.getElementById("currentTime");
+  const remainingTimeEl = document.getElementById("remainingTime");
+
+  let current = 0;
+  let isPlaying = false;
+  let progUpdater = null; // interval for smooth UI updates
+  
+function toggleForeverLoop() {
+  foreverLoop = !foreverLoop;
+  audio.loop = foreverLoop;
+  loopBtn.classList.toggle("active", foreverLoop);
+}
+
+  function loadTrack(index){
+    if (index < 0) index = tracks.length - 1;
+    if (index >= tracks.length) index = 0;
+    current = index;
+    audio.src = tracks[current].src;
+    trackName.textContent = tracks[current].name;
+    audio.load();
+    progress.value = 0;
+    currentTimeEl.textContent = "0:00";
+    remainingTimeEl.textContent = "-0:00";
+    // auto-play if already playing
+    if (isPlaying) audio.play().catch(()=>{});
+  }
+
+  function play() {
+    audio.play().then(()=> {
+      isPlaying = true;
+      playBtn.textContent = "⏸";
+      startProgUpdater();
+    }).catch(()=> {
+      // autoplay may be blocked; still update UI
+      isPlaying = true;
+      playBtn.textContent = "⏸";
+      startProgUpdater();
+    });
+  }
+
+  function pause() {
+    audio.pause();
+    isPlaying = false;
+    playBtn.textContent = "▶";
+    stopProgUpdater();
+  }
+
+  function togglePlay() {
+    if (!audio.src) {
+      loadTrack(0);
+      play();
+      return;
+    }
+    if (isPlaying) pause(); else play();
+  }
+
+  function prevTrack() {
+    loadTrack(current - 1);
+    if (!isPlaying) { /* stay paused */ } else play();
+  }
+
+  function nextTrack() {
+    loadTrack(current + 1);
+    if (!isPlaying) { /* stay paused */ } else play();
+  }
+
+  function startProgUpdater(){
+    stopProgUpdater();
+    progUpdater = setInterval(updateProgressUI, 250);
+  }
+  function stopProgUpdater(){
+    if (progUpdater) {
+      clearInterval(progUpdater);
+      progUpdater = null;
+    }
+  }
+
+  function updateProgressUI(){
+    const dur = audio.duration || 0;
+    const cur = audio.currentTime || 0;
+    if (dur > 0) {
+      const percent = (cur / dur) * 100;
+      progress.value = percent;
+      currentTimeEl.textContent = formatTime(cur);
+      const rem = dur - cur;
+      remainingTimeEl.textContent = "-" + formatTime(rem);
+    } else {
+      progress.value = 0;
+      currentTimeEl.textContent = "0:00";
+      remainingTimeEl.textContent = "-0:00";
+    }
+  }
+
+  // Seek when user drags the slider
+  let seeking = false;
+  progress.addEventListener("input", (e) => {
+    seeking = true;
+    const percent = Number(e.target.value);
+    const dur = audio.duration || 0;
+    if (dur > 0) {
+      const newTime = (percent / 100) * dur;
+      currentTimeEl.textContent = formatTime(newTime);
+      remainingTimeEl.textContent = "-" + formatTime(dur - newTime);
+    }
+  });
+
+  progress.addEventListener("change", (e) => {
+    const percent = Number(e.target.value);
+    const dur = audio.duration || 0;
+    if (dur > 0) {
+      audio.currentTime = (percent / 100) * dur;
+    }
+    seeking = false;
+  });
+
+  // Allow click-to-seek on the slider track
+progress.addEventListener("click", (e) => {
+  const rect = progress.getBoundingClientRect();
+  const clickX = e.clientX - rect.left;
+  const percent = clickX / rect.width;
+
+  const dur = audio.duration || 0;
+  if (dur > 0) {
+    audio.currentTime = percent * dur;
+  }
+});
+
+  // update on native timeupdate for accuracy when not seeking
+  audio.addEventListener("timeupdate", () => {
+    if (!seeking) updateProgressUI();
+  });
+
+  audio.addEventListener("durationchange", updateProgressUI);
+
+  audio.addEventListener("ended", () => {
+  // If looping is ON, browser handles it
+  if (foreverLoop) return;
+
+  // Otherwise go to next track
+  nextTrack();
+});
+
+
+  // helper: format seconds -> M:SS
+  function formatTime(t) {
+    t = Math.max(0, Math.floor(t));
+    const m = Math.floor(t / 60);
+    const s = t % 60;
+    return `${m}:${String(s).padStart(2,"0")}`;
+  }
+
+  // wire controls
+  playBtn.addEventListener("click", togglePlay);
+  prevBtn.addEventListener("click", () => { prevTrack(); });
+  nextBtn.addEventListener("click", () => { nextTrack(); });
+  loopBtn.addEventListener("click", toggleForeverLoop);
+
+  // initialize
+  loadTrack(0);
+
+  // expose for debugging (optional)
+  window.__miniLocalPlayer = {
+    loadTrack, play, pause, nextTrack, prevTrack
+  };
+})();

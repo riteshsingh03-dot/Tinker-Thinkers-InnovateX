@@ -98,7 +98,33 @@
         <div class="box">Upcoming (Calendar)</div>
       </div>
     </section>
-    <footer class="music">Spotify</footer>
+    <footer class="music">
+  <div class="mini-player" id="miniPlayer">
+    <div class="track-name" id="trackName">—</div>
+
+    <div class="controls-row">
+  <button class="small-btn" id="prevBtn">⏮</button>
+
+  <button class="big-play-btn" id="playPauseBtn">▶</button>
+
+  <button class="small-btn" id="nextBtn">⏭</button>
+</div>
+
+<div class="progress-row">
+  <span class="time" id="currentTime">0:00</span>
+
+  <input type="range" id="progress" min="0" max="100" value="0" step="0.1" />
+
+  <button class="loop-btn" id="loopBtn" title="Loop forever">🔁</button>
+
+  <span class="time" id="remainingTime">-0:00</span>
+</div>
+
+    <!-- single audio element used by the player -->
+    <audio id="localAudio" preload="metadata"></audio>
+  </div>
+</footer>
+
   </section>
 
   <!-- GOOGLE -->
