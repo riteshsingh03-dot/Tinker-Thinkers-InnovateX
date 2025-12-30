@@ -391,3 +391,36 @@ function enterApp() {
   }, 900);
 }
 
+const quotes = [
+  "Focus on progress, not perfection.",
+  "Small steps every day lead to big results.",
+  "Discipline beats motivation.",
+  "Your future self will thank you.",
+  "Consistency creates confidence.",
+  "Start where you are. Use what you have.",
+  "Do one thing at a time, but do it well.",
+  "Success is built in focused sessions.",
+  "Plan smart. Execute harder.",
+  "Deep work creates deep results."
+];
+
+const quoteBox = document.getElementById("quoteBox");
+
+function shuffleQuote() {
+  quoteBox.style.opacity = 0;
+
+  setTimeout(() => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    quoteBox.textContent = quotes[randomIndex];
+    quoteBox.style.opacity = 1;
+  }, 300);
+}
+
+
+// Show a quote immediately
+shuffleQuote();
+
+// Change quote every 10 seconds
+setInterval(shuffleQuote, 10000);
+
+

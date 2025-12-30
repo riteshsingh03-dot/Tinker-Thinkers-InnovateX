@@ -575,3 +575,7 @@ body {
 .loop-btn {
   transform: scale(1.05); /* zooms in slightly */
 }
+
+.top-bar {
+  transition: opacity 0.5s ease;
+}
