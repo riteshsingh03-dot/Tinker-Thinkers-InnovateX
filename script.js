@@ -424,3 +424,50 @@ shuffleQuote();
 setInterval(shuffleQuote, 10000);
 
 
+/* ===== GOOGLE TODO LOGIC ===== */
+
+const todoInput = document.getElementById("todoInput");
+const todoList = document.getElementById("todoList");
+
+let todos = JSON.parse(localStorage.getItem("todos")) || [];
+
+function saveTodos() {
+  localStorage.setItem("todos", JSON.stringify(todos));
+}
+
+function renderTodos() {
+  todoList.innerHTML = "";
+
+  todos.forEach((todo, index) => {
+    const li = document.createElement("li");
+    li.className = "todo-item" + (todo.done ? " completed" : "");
+
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = todo.done;
+
+    checkbox.addEventListener("change", () => {
+      todo.done = checkbox.checked;
+      saveTodos();
+      renderTodos();
+    });
+
+    const span = document.createElement("span");
+    span.textContent = todo.text;
+
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    todoList.appendChild(li);
+  });
+}
+
+todoInput.addEventListener("keydown", e => {
+  if (e.key === "Enter" && todoInput.value.trim()) {
+    todos.push({ text: todoInput.value.trim(), done: false });
+    todoInput.value = "";
+    saveTodos();
+    renderTodos();
+  }
+});
+
+renderTodos();
