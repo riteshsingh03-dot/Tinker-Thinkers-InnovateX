@@ -51,6 +51,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+  border-radius: 20px
 }
 
 /* TOP BAR */
@@ -60,7 +61,7 @@ body {
   color: #e6e6f0;
   padding: 10px;
   font-weight: bold;
-  border-radius: 0%;
+  border-radius: 20px
 }
 
 /* GRID */
@@ -70,6 +71,7 @@ body {
   grid-template-columns: 1fr 2fr 1fr;
   gap: 15px;
   margin-top: 15px;
+  border-radius: 20px
 }
 
 /* PANELS */
@@ -78,16 +80,19 @@ body {
   box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   color: #e6e6f0;
   padding: 15px;
+  border-radius: 20px
 }
 
 .left {
   font-size: 16px;
+  border-radius: 20px
 }
 
 .center {
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 20px
 }
 
 .circle {
@@ -101,6 +106,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  border-radius: 20px
 }
 
 .box {
@@ -109,6 +115,7 @@ body {
   color: #e6e6f0;
   padding: 20px;
   text-align: center;
+  border-radius: 20px
 }
 
 .music {
@@ -118,7 +125,8 @@ body {
   text-align: center;       
   padding: 12px;
   margin: 15px auto 0;     
-  width: 1000px;                                                
+  width: 1000px;
+  border-radius: 20px                                             
 }
 .view {
   display: none;
@@ -208,6 +216,7 @@ body {
   width: 90px;
   margin: 0 auto;
   padding: 4px;
+  border-radius: 10px
 }
 
 /* Controls */
