@@ -551,3 +551,27 @@ body {
     transform: scale(1);
   }
 }
+
+.small-btn {
+  transition: transform 0.3s ease; /* makes hover smooth */
+}
+
+.small-btn:hover {
+  transform: scale(1.05); /* zooms in slightly */
+}
+
+.big-play-btn {
+  transition: transform 0.3s ease; /* makes hover smooth */
+}
+
+.big-play-btn:hover {
+  transform: scale(1.05); /* zooms in slightly */
+}
+
+.loop-btn {
+  transition: transform 0.3s ease; /* makes hover smooth */
+}
+
+.loop-btn {
+  transform: scale(1.05); /* zooms in slightly */
+}
