@@ -397,3 +397,124 @@ body {
   opacity: 1;
   color: #666;
 }
+
+/* ================================
+   INTRO SCREEN (MINIMALIZED)
+================================ */
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, #0e0e0e, #121212);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  z-index: 9999;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* Subtle background texture */
+.dna-bg {
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background:
+    repeating-linear-gradient(
+      60deg,
+      rgba(255, 255, 255, 0.025) 0px,
+      rgba(255, 255, 255, 0.025) 1px,
+      transparent 1px,
+      transparent 28px
+    );
+  animation: dnaMove 30s linear infinite;
+}
+
+@keyframes dnaMove {
+  from {
+    transform: translate(-10%, -10%) rotate(0deg);
+  }
+  to {
+    transform: translate(0%, 0%) rotate(360deg);
+  }
+}
+
+/* Content */
+.intro-content {
+  position: relative;
+  text-align: center;
+  color: #ffffff;
+  animation: introPop 0.9s ease forwards;
+}
+
+@keyframes introPop {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Title */
+.intro-title {
+  font-size: 52px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+
+/* Subtitle */
+.intro-tagline {
+  font-size: 16px;
+  opacity: 0.6;
+  margin-bottom: 32px;
+}
+
+/* Button */
+.intro-btn {
+  padding: 12px 34px;
+  font-size: 15px;
+  border-radius: 24px;
+  border: none;
+  cursor: pointer;
+  background: #ffffff;
+  color: #000;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.intro-btn:hover {
+  background: #eaeaea;
+  transform: translateY(-1px);
+}
+
+/* ================================
+   TRANSITIONS
+================================ */
+
+.hidden {
+  display: none;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: scale(1.05);
+}
+
+.fade-in {
+  display: flex !important;
+  animation: appFade 0.7s ease forwards;
+}
+
+@keyframes appFade {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

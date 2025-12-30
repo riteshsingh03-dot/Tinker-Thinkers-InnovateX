@@ -377,3 +377,17 @@ progress.addEventListener("click", (e) => {
     loadTrack, play, pause, nextTrack, prevTrack
   };
 })();
+
+function enterApp() {
+  const intro = document.getElementById("introScreen");
+  const app = document.getElementById("mainApp");
+
+  intro.classList.add("fade-out");
+
+  setTimeout(() => {
+    intro.style.display = "none";
+    app.classList.remove("hidden");
+    app.classList.add("fade-in");
+  }, 900);
+}
+
