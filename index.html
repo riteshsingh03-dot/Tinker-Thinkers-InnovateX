@@ -26,7 +26,7 @@
     <button class="task-icon active" data-view="home">P</button>
     <button class="task-icon" data-view="" onclick="window.open('https://www.google.com', '_blank')"><img src="https://static.vecteezy.com/system/resources/previews/011/598/471/original/google-logo-icon-illustration-free-vector.jpg" height="48" width="48" style="border-radius:50%;"></button>
     <button class="task-icon" data-view="gemini"><img src="https://th.bing.com/th/id/OIP.kkoBVyiBexLUCxwk_0LZ-gHaGx?o=7rm=3&rs=1&pid=ImgDetMain&o=7&rm=3" height="48" width="48" style="border-radius:50%;"></button>
-    <button class="task-icon" data-view="drawings">
+    <button class="task-icon" data-view="drawings" onclick="showView('drawings')">
   <img 
     src="https://logowik.com/content/uploads/images/google-drawings7992.jpg"
     width="40"
@@ -187,10 +187,52 @@
     <p style="color: rgba(255, 255, 255, 0.72);">Working on connecting the API</p>
   </section>
 
-  <!-- CHATGPT -->
-  <section class="view" id="drawings">
-    <h1 style="color: rgba(255, 255, 255, 0.72);">Google Drawings</h1>
-  </section>
+<section class="view" id="drawings">
+
+  <h1 style="color: rgba(255,255,255,0.72);">
+    Google Drawings
+  </h1>
+
+  <p style="opacity:0.7; margin:8px 0 14px;">
+    Open, organize, and quickly access your design diagrams
+  </p>
+
+  <!-- Open Drawings (global) -->
+  <button
+    class="drawings-btn primary"
+    style="margin-bottom:16px;"
+    onclick="window.open('https://drawings.google.com', '_blank')">
+    Open My Drawings
+  </button>
+
+  <!-- Organizer -->
+  <div class="drawings-form">
+    <input
+      type="text"
+      id="drawingNameInput"
+      class="drawings-input"
+      placeholder="Drawing name (e.g. UI Flow Diagram)"
+    />
+
+    <input
+      type="text"
+      id="drawingLinkInput"
+      class="drawings-input"
+      placeholder="Paste Google Drawing link"
+    />
+
+    <button
+      class="drawings-btn secondary"
+      onclick="saveDrawing()">
+      Save Drawing
+    </button>
+  </div>
+
+  <!-- Saved drawings -->
+  <div class="drawings-list" id="drawingsList"></div>
+
+</section>
+
 
   <!-- NOTEBOOK -->
   <section class="view" id="notebook">

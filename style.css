@@ -739,3 +739,200 @@ TODO PANEL
   flex: 0 0 45%; /* Slightly reduce Todo height to give Calendar more room */
   margin-bottom: 0; /* Remove margin if parent has gap */
 }
+
+/* ===== Google Drawings Section ===== */
+
+#drawings {
+  padding: 20px;
+}
+
+/* Input box */
+.drawings-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.85);
+  font-size: 14px;
+  outline: none;
+}
+
+.drawings-input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+.drawings-input:focus {
+  border-color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.1);
+}
+
+/* Button row */
+.drawings-btn-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+/* Base button */
+.drawings-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  width: auto;              /* prevents stretching */
+}
+
+/* Primary button */
+.drawings-btn.primary {
+  background: #c7c7c7;
+  color: #111111;
+}
+
+/* Secondary button */
+.drawings-btn.secondary {
+  background: rgba(255,255,255,0.12);
+  color: rgba(235, 235, 235, 0.85);
+}
+
+.drawings-btn:hover {
+  opacity: 0.9;
+}
+
+.drawings-btn:active {
+  transform: scale(0.97);
+}
+
+/* ===== Google Drawings Organizer ===== */
+
+#drawings {
+  padding: 20px;
+}
+
+/* Form */
+.drawings-form {
+  max-width: 520px;
+  margin-bottom: 20px;
+}
+
+/* Inputs */
+.drawings-input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: rgba(197, 197, 197, 0.85);
+  font-size: 14px;
+  outline: none;
+}
+
+.drawings-input::placeholder {
+  color: rgba(255,255,255,0.45);
+}
+
+.drawings-input:focus {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.35);
+}
+
+/* Buttons */
+.drawings-btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  width: auto;
+}
+
+.drawings-btn.primary {
+  background: #ffffff;
+  color: #111111;
+}
+
+.drawings-btn.primary:hover {
+  opacity: 0.9;
+}
+
+.drawings-btn:active {
+  transform: scale(0.97);
+}
+
+/* List */
+.drawings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 600px;
+}
+
+/* Item */
+.drawing-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.06);
+}
+
+.drawing-name {
+  color: rgba(255,255,255,0.9);
+  font-size: 14px;
+}
+
+/* Item actions */
+.drawing-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.drawing-open {
+  background: rgba(255,255,255,0.15);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.drawing-delete {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.drawing-delete:hover {
+  color: rgba(255,255,255,0.9);
+}
+
+/* Empty state text (No drawings saved yet) */
+#drawings .drawings-list p {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+/* Darken "Open My Drawings" button specifically */
+#drawings .drawings-btn.primary {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+/* Hover state */
+#drawings .drawings-btn.primary:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* Subtitle text under Google Drawings heading */
+#drawings > p {
+  color: rgba(255, 255, 255, 0.65);
+}

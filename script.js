@@ -492,3 +492,75 @@ todoInput.addEventListener("keydown", e => {
 });
 
 renderTodos();
+
+function openDrawingLink() {
+  const input = document.getElementById("drawingLinkInput");
+  const link = input.value.trim();
+
+  if (!link) {
+    alert("Please paste a Google Drawing link");
+    return;
+  }
+
+  window.open(link, "_blank");
+}
+
+let drawings = JSON.parse(localStorage.getItem("prodeff_drawings")) || [];
+
+function saveDrawing() {
+  const nameInput = document.getElementById("drawingNameInput");
+  const linkInput = document.getElementById("drawingLinkInput");
+
+  const name = nameInput.value.trim();
+  const link = linkInput.value.trim();
+
+  if (!name || !link) {
+    alert("Please enter both name and link");
+    return;
+  }
+
+  drawings.unshift({ name, link });
+  localStorage.setItem("prodeff_drawings", JSON.stringify(drawings));
+
+  nameInput.value = "";
+  linkInput.value = "";
+
+  renderDrawings();
+}
+
+function deleteDrawing(index) {
+  drawings.splice(index, 1);
+  localStorage.setItem("prodeff_drawings", JSON.stringify(drawings));
+  renderDrawings();
+}
+
+function renderDrawings() {
+  const list = document.getElementById("drawingsList");
+  list.innerHTML = "";
+
+  if (drawings.length === 0) {
+    list.innerHTML = `<p style="opacity:0.5;">No drawings saved yet</p>`;
+    return;
+  }
+
+  drawings.forEach((item, index) => {
+    const div = document.createElement("div");
+    div.className = "drawing-item";
+
+    div.innerHTML = `
+      <div class="drawing-name">${item.name}</div>
+      <div class="drawing-actions">
+        <button class="drawing-open" onclick="window.open('${item.link}','_blank')">
+          Open
+        </button>
+        <button class="drawing-delete" onclick="deleteDrawing(${index})">
+          ✕
+        </button>
+      </div>
+    `;
+
+    list.appendChild(div);
+  });
+}
+
+renderDrawings();
