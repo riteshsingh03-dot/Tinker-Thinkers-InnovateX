@@ -107,6 +107,7 @@ body {
   flex-direction: column;
   gap: 15px;
   border-radius: 20px
+  height: 100%;
 }
 
 .box {
@@ -581,17 +582,20 @@ body {
 }
 
 /* ================================
-   GOOGLE TODO PANEL
+TODO PANEL
 ================================ */
 
 .todo-panel {
-  background: #ffffff;
+  background: linear-gradient( 180deg, #2b3048, #23273d);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
   border-radius: 10px;
   padding: 14px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  max-height: 360px;
+  scrollbar-width: thin;
+  overflow-y: auto;
+  max-height: 50%;
+  flex: 0 0 50%;;
 }
 
 .todo-title {
@@ -604,10 +608,13 @@ body {
 .todo-input {
   padding: 8px 10px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid #d2d3d8;
   font-size: 13px;
   outline: none;
   margin-bottom: 10px;
+  background-color: #2c3044;
+  color: #bbb;
+  
 }
 
 .todo-input:focus {
@@ -634,7 +641,7 @@ body {
 }
 
 .todo-item:hover {
-  background: #f2f2f2;
+  background: #1f2233;
 }
 
 /* Checkbox */
@@ -646,4 +653,51 @@ body {
 .todo-item.completed span {
   text-decoration: line-through;
   opacity: 0.5;
+}
+
+.todo-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 6px;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.todo-list li.completed {
+  opacity: 0.5;
+}
+
+.todo-list li.completed span {
+  text-decoration: line-through;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.todo-item span {
+  flex: 1;
+}
+
+/* delete button */
+.delete-btn {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  opacity: 0.9;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.15s ease;
+  color: #000000;
+}
+
+.todo-item:hover .delete-btn {
+  opacity: 1;
+}
+
+.delete-btn:hover {
+  transform: scale(1.1);
+  color: #e04f4d;
+  transform: scale(1.15);
 }

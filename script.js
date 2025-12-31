@@ -438,7 +438,13 @@ function saveTodos() {
 function renderTodos() {
   todoList.innerHTML = "";
 
-  todos.forEach((todo, index) => {
+  // unfinished first, completed last
+  const sortedTodos = [
+    ...todos.filter(t => !t.done),
+    ...todos.filter(t => t.done)
+  ];
+
+  sortedTodos.forEach(todo => {
     const li = document.createElement("li");
     li.className = "todo-item" + (todo.done ? " completed" : "");
 
@@ -455,11 +461,26 @@ function renderTodos() {
     const span = document.createElement("span");
     span.textContent = todo.text;
 
+    // 🗑 delete button
+    const delBtn = document.createElement("button");
+    delBtn.textContent = "✕";
+    delBtn.className = "delete-btn";
+
+    delBtn.addEventListener("click", () => {
+      todos = todos.filter(t => t !== todo);
+      saveTodos();
+      renderTodos();
+    });
+
     li.appendChild(checkbox);
     li.appendChild(span);
+    li.appendChild(delBtn);
+
     todoList.appendChild(li);
   });
 }
+
+
 
 todoInput.addEventListener("keydown", e => {
   if (e.key === "Enter" && todoInput.value.trim()) {
