@@ -701,3 +701,41 @@ TODO PANEL
   color: #e04f4d;
   transform: scale(1.15);
 }
+
+
+
+
+/* ================================
+   CALENDAR & RIGHT PANEL FIXES
+================================ */
+
+/* 1. Ensure the Calendar fills the remaining space */
+.google-calendar-wrapper {
+  flex: 1;                        /* Takes all remaining height (50%) */
+  background: linear-gradient(180deg, #1f2338, #171a2b);
+  border-radius: 10px;            /* Matches your other panels */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  overflow: hidden;               /* Rounds the corners of the iframe */
+  position: relative;
+  display: flex;
+}
+
+/* 2. Style the Iframe to fit perfectly */
+.google-calendar-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+  /* Optional: "Dark Mode" hack for Google Calendar */
+  filter: invert(0.92) hue-rotate(180deg) contrast(0.9);
+}
+
+/* 3. Hide the placeholder 'Integration Pending' box if you are using the real iframe now */
+.right .box {
+  display: none;
+}
+
+/* 4. Tweak the To-Do panel to ensure spacing is correct */
+.todo-panel {
+  flex: 0 0 45%; /* Slightly reduce Todo height to give Calendar more room */
+  margin-bottom: 0; /* Remove margin if parent has gap */
+}
