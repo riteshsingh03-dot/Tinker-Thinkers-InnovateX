@@ -936,3 +936,87 @@ TODO PANEL
 #drawings > p {
   color: rgba(255, 255, 255, 0.65);
 }
+
+/* ===== Prodeff Main Logo Button (P) ===== */
+.taskbar .task-icon:first-child {
+  /* Button base (do NOT scale) */
+  background: radial-gradient(
+    circle at top left,
+    #ffffff 0%,
+    #e6e6e6 40%,
+    #cfcfcf 100%
+  );
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.35),
+    0 8px 20px rgba(0,0,0,0.4);
+}
+
+/* Style ONLY the "P" text */
+.taskbar .task-icon:first-child {
+  font-family: "Inter", "Segoe UI", "SF Pro Display", system-ui, -apple-system, sans-serif;
+  font-weight: 700;
+  font-size: 22px;              /* text size increase */
+  letter-spacing: 0.8px;
+  line-height: 1;               /* keeps text tight */
+  color: #0f172a;
+
+  /* Text-specific emphasis */
+  text-shadow:
+    0 1px 0 rgba(255,255,255,0.7),
+    0 2px 6px rgba(0,0,0,0.25);
+}
+
+/* Active state = "home / main" indicator */
+.taskbar .task-icon:first-child.active {
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.8),
+    0 0 0 6px rgba(255,255,255,0.12),
+    0 12px 24px rgba(0,0,0,0.5);
+}
+
+/* Hover feedback (very subtle) */
+.taskbar .task-icon:first-child:hover {
+  filter: brightness(1.03);
+}
+
+/* ===== Focus Wave Animation ===== */
+
+.focus-wrapper {
+  position: relative;
+}
+
+/* Invisible wave by default */
+.focus-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+/* When timer is running */
+.focus-wrapper.running .focus-pulse {
+  animation: focusWave 3s ease-out infinite;
+}
+
+/* Wave animation */
+@keyframes focusWave {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.3;
+  }
+  70% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: scale(1.25);
+    opacity: 0;
+  }
+}
+
+/* Wave look */
+.focus-pulse {
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.18),
+    0 0 40px rgba(255,255,255,0.12);
+}

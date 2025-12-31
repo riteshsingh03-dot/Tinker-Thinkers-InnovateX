@@ -173,12 +173,21 @@ sessionsEl.textContent = sessions;
 
 setMode(mode);
 function toggleTimer() {
+  const focusWrapper = document.querySelector(".focus-wrapper");
+
   if (interval) {
     pauseTimer();
     document.getElementById("toggleBtn").textContent = "▶";
+
+    // STOP wave animation
+    focusWrapper.classList.remove("running");
+
   } else {
     startTimer();
     document.getElementById("toggleBtn").textContent = "⏸";
+
+    // START wave animation
+    focusWrapper.classList.add("running");
   }
 }
 
