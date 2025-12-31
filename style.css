@@ -106,7 +106,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  border-radius: 20px
+  border-radius: 20px;
   height: 100%;
 }
 
